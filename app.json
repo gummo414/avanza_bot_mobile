@@ -1,9 +1,28 @@
 {
   "expo": {
-    "name": "Avanza Bot",
+    "name": "AVA Bot beta",
     "slug": "avanza-bot-mobile",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "sdkVersion": "54.0.0",
-    "platforms": ["ios", "android"]
+    "platforms": [
+      "android"
+    ],
+    "android": {
+      "package": "se.tornfalk.avanzabot",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#F7F6F2"
+      }
+    },
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#F7F6F2"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "24da578f-04ba-45e4-a2d7-26c031864399"
+      }
+    }
   }
 }
