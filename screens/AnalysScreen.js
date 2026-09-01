@@ -83,7 +83,7 @@ function PulseDot({ color }) {
       Animated.timing(anim, { toValue: 0.3, duration: 900, useNativeDriver: true }),
       Animated.timing(anim, { toValue: 1,   duration: 900, useNativeDriver: true }),
     ])).start();
-  }, []);
+  }, [anim]);
   return <Animated.View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: color, opacity: anim }} />;
 }
 
