@@ -1,47 +1,45 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { Text, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, Platform } from 'react-native';
 
-import HomeScreen        from './screens/HomeScreen';
-import AnalysScreen      from './screens/AnalysScreen';
+import { ThemeProvider, useTheme } from './ThemeContext';
+import HomeScreen          from './screens/HomeScreen';
+import AnalysScreen        from './screens/AnalysScreen';
 import InstallningarScreen from './screens/InstallningarScreen';
 
 const Tab = createBottomTabNavigator();
 
-const C = {
-  active:   '#1A1A1A',
-  inactive: '#AEAB9E',
-  bg:       '#FFFFFF',
-  border:   '#E5E3DC',
-};
+const ICONS = { Hem: '⌂', Analys: '↗', Inställningar: '⚙' };
 
-function TabIcon({ label, active }) {
-  const icons = { Hem: '⌂', Analys: '↗', Inställningar: '⚙' };
+function TabIcon({ label, active, theme }) {
   return (
-    <Text style={{ fontSize: 20, color: active ? C.active : C.inactive }}>
-      {icons[label]}
+    <Text style={{ fontSize: 20, color: active ? theme.text : theme.text3 }}>
+      {ICONS[label]}
     </Text>
   );
 }
 
-export default function App() {
+function Navigator() {
+  const { theme } = useTheme();
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,
-          tabBarIcon: ({ focused }) => <TabIcon label={route.name} active={focused} />,
-          tabBarActiveTintColor: C.active,
-          tabBarInactiveTintColor: C.inactive,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon label={route.name} active={focused} theme={theme} />
+          ),
+          tabBarActiveTintColor:   theme.text,
+          tabBarInactiveTintColor: theme.text3,
           tabBarStyle: {
-            backgroundColor: C.bg,
-            borderTopColor: C.border,
-            borderTopWidth: 1,
-            paddingBottom: Platform.OS === 'ios' ? 20 : 8,
-            paddingTop: 8,
-            height: Platform.OS === 'ios' ? 80 : 60,
+            backgroundColor: theme.tabBg,
+            borderTopColor:  theme.border,
+            borderTopWidth:  1,
+            paddingBottom:   Platform.OS === 'ios' ? 20 : 8,
+            paddingTop:      8,
+            height:          Platform.OS === 'ios' ? 80 : 60,
           },
           tabBarLabelStyle: { fontSize: 11, fontWeight: '500' },
         })}
@@ -51,5 +49,13 @@ export default function App() {
         <Tab.Screen name="Inställningar" component={InstallningarScreen} />
       </Tab.Navigator>
     </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Navigator />
+    </ThemeProvider>
   );
 }

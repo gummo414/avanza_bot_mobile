@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "Avanza Bot",
+    "slug": "avanza-bot-mobile",
+    "version": "1.0.0",
+    "sdkVersion": "54.0.0",
+    "platforms": ["ios", "android"]
+  }
+}
