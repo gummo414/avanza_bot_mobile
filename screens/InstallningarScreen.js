@@ -22,7 +22,7 @@ function SettingsCard({ icon, title, subtitle, children, theme }) {
   );
 }
 
-export default function InstallningarScreen() {
+export default function InstallningarScreen({ onLogout }) {
   const { theme, isDark, setOverride, override, chartSource, setChartSource } = useTheme();
 
   // Toggle: null = system, 'dark' = forced dark, 'light' = forced light
@@ -127,11 +127,11 @@ export default function InstallningarScreen() {
         <Text style={[s.sectionLabel, { color: theme.text3 }]}>Analys</Text>
         <SettingsCard icon="🤖" title="AI-analys" subtitle="Automatisk analys körs varje dag kl 08:00." theme={theme} />
 
-        <Text style={[s.version, { color: theme.text3 }]}>Avanza Bot v1.0.0</Text>
+        <Text style={[s.version, { color: theme.text3 }]}>AVA Bot v0.1 beta</Text>
 
         <TouchableOpacity
           style={[s.logoutBtn, { borderColor: theme.border }]}
-          onPress={() => {}}
+          onPress={onLogout}
           activeOpacity={0.7}
         >
           <Text style={[s.logoutText, { color: theme.sell }]}>Logga ut</Text>
