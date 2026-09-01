@@ -127,13 +127,15 @@ export default function InstallningarScreen() {
         <Text style={[s.sectionLabel, { color: theme.text3 }]}>Analys</Text>
         <SettingsCard icon="🤖" title="AI-analys" subtitle="Automatisk analys körs varje dag kl 08:00." theme={theme} />
 
-        {/* Konto */}
-        <Text style={[s.sectionLabel, { color: theme.text3 }]}>Konto</Text>
-        <SettingsCard icon="🚪" title="Logga ut" theme={theme}>
-          <Button title="Logga ut" onPress={() => {}} variant="secondary" theme={theme} />
-        </SettingsCard>
-
         <Text style={[s.version, { color: theme.text3 }]}>Avanza Bot v1.0.0</Text>
+
+        <TouchableOpacity
+          style={[s.logoutBtn, { borderColor: theme.border }]}
+          onPress={() => {}}
+          activeOpacity={0.7}
+        >
+          <Text style={[s.logoutText, { color: theme.sell }]}>Logga ut</Text>
+        </TouchableOpacity>
 
       </ScrollView>
     </SafeAreaView>
@@ -157,6 +159,8 @@ const s = StyleSheet.create({
   cardSub:      { fontSize: 12, marginTop: 2, lineHeight: 18 },
   cardFooter:   { paddingHorizontal: 16, paddingBottom: 16 },
   version:      { textAlign: 'center', fontSize: 11, marginTop: 16 },
+  logoutBtn:    { borderRadius: 14, borderWidth: 1, paddingVertical: 16, alignItems: 'center', marginTop: 8 },
+  logoutText:   { fontSize: 15, fontWeight: '600' },
 
   // Segmented control
   segmentWrap:  { flexDirection: 'row', margin: 16, marginTop: 0, borderRadius: 10, borderWidth: 1, overflow: 'hidden' },
